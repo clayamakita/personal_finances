@@ -1,79 +1,78 @@
-# Personal Finances Data Platform
-[![Ingestion: Fivetran](https://img.shields.io/badge/Ingestion-Fivetran-blueviolet)](https://github.com/)
-[![Warehouse: BigQuery](https://img.shields.io/badge/Warehouse-BigQuery-blue)](https://cloud.google.com/bigquery)
-[![Transformation: dbt](https://img.shields.io/badge/Transformation-dbt-orange)](https://www.getdbt.com/)
-[![Visualization: Power BI](https://img.shields.io/badge/Visualization-Power%20BI-yellow)](https://powerbi.microsoft.com/)
+# 💰 Personal Finances Analytics
 
-This project automates the ingestion, transformation, testing, and visualization of personal finances and goals to deliver actionable insights.
+**An end-to-end data platform that turns a couple's raw financial transactions into insights about their money.**
 
-1. [🏗️ Architecture & Data Flow](#architecture-data-flow)
+[![Source: Google Sheets](https://img.shields.io/badge/Source-Google%20Sheets-34A853?logo=googlesheets&logoColor=white)](https://www.google.com/sheets/about/)
+[![Ingestion: Fivetran](https://img.shields.io/badge/Ingestion-Fivetran-blueviolet)](https://www.fivetran.com/)
+[![Warehouse: BigQuery](https://img.shields.io/badge/Warehouse-BigQuery-4285F4?logo=googlebigquery&logoColor=white)](https://cloud.google.com/bigquery)
+[![Transformation: dbt](https://img.shields.io/badge/Transformation-dbt-FF694B?logo=dbt&logoColor=white)](https://www.getdbt.com/)
+[![Visualization: Power BI](https://img.shields.io/badge/Visualization-Power%20BI-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 
-2. [🛠️ Implementation Details](#implementation-details)
+Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end analytics workflow.
 
-    2.1. [📂 Ingestion (Google Sheets & Fivetran)](#stack-ingestion)
+---
 
-    2.2 [📐Transformation (dbt)](#stack-transformation)
+## 🧑‍🤝‍🧑 The story
 
-    2.3 [📊 Visualization (Power BI)](#stack-bi)
+Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple in their 30s trying to make good financial decisions, and there are the kind of questions they ask themselves from time to time:
 
-    2.4 [📝 Project Goals & Storytelling](#stack-storytelling)
+1. 🛒 **Enjoy life** — *Can we afford these groceries? Can we book a VR session this weekend?*
+2. 🎯 **Achieve goals** — *Which goals are already funded? When can we afford a car?*
+3. 🏖️ **Build wealth** — *Will we be okay when we retire? What would our income look like?*
 
+This project builds the data pipeline and dashboard that answers those questions automatically — no manual spreadsheet reconciliation required.
 
-## 🏗️ 1. Architecture & Data Flow <a id="architecture-data-flow"></a>
+> All data shown is **synthetic**, generated to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
 
-The pipeline operates on an automated data stack:
+## 📸 The dashboard
 
-1. **Source**: Financial transactions, budget targets, and savings goals are managed in [Google Sheets]().
+**Monthly Summary** — tracks paycheck, fixed costs, guilt-free spending, and every transaction against budget in real time.
 
-2. **Extraction & Ingestion**: Fivetran automatically syncs data from Google Sheets once a day to the data warehouse. 
+![Monthly summary dashboard](assets/dashboard-monthly-summary.png)
 
-3. **Data Warehousing**: Google BigQuery acts as the centralized OLAP data warehouse.
+**Net Worth, Investments & Retirement** — tracks savings goals, portfolio value, and a forward-looking retirement projection.
 
-4. **Transformation & Modeling**: dbt handles data cleansing, data modeling, and data quality testing. [Browse dbt SQL models]().
+![Net worth and retirement dashboard](assets/dashboard-networth-retirement.png)
 
-5. **Visualization**: Power BI surfaces key performance indicators (KPIs). [View Power BI report]() or [download the personal_finances.pbix file]().
+## 🧭 How they budget: the Conscious Spending Plan
 
-6. **Business Communication**: A structured slide deck translates project goals and dashboard into easy-to-understand language. [View Google Slides deck]()
+The dashboard is built around a simple framework for allocating take-home pay, adapted from Ramit Sethi's *Conscious Spending Plan*:
 
+| Bucket | Covers | Target % of take-home pay |
+|---|---|---|
+| 🏠 Fixed Costs | What you need to live — rent, utilities, groceries, transportation | 50–60% |
+| 🎯 Savings | Money you'll use in 1–5 years — emergency fund, vacation, car | 5–10% |
+| 📈 Investments | Long-term wealth building — TFSA, RRSP, non-registered accounts | 5–10% |
+| 🎉 Guilt-Free | What you love — travel, dining out, clothes, hobbies | 20–35% |
 
-## 🛠️ 3. Implementation Details <a id="implementation-details"></a>
+Every transaction is tagged to one of these buckets, which is what lets the dashboard answer "can we afford it?" at a glance.
 
-### 📂 2.1 Ingestion (Google Sheets & Fivetran) <a id="stack-ingestion"></a>
+## 🏗️ How it's built
 
-Data is maintained and manually input on Google Sheets file then it's ingested by Fivetran into the data warehouse.
+```mermaid
+flowchart LR
+    A["📝 Google Sheets\nTransactions · Budget · Goals"] -->|Daily sync| B["🔄 Fivetran"]
+    B --> C[("🏢 BigQuery\nsrc_google_sheets")]
+    C --> D["🧱 dbt staging\nclean & standardize"]
+    D --> E["🔗 dbt intermediate\njoin & aggregate"]
+    E --> F["⭐ dbt marts\nfct_cashflow_transactions · fct_budget\ndim_categories · dim_dates"]
+    F --> G["📊 Power BI\nDashboard"]
+```
 
-- Cadence: Automated daily syncs.
+| Stage | Tool | What happens |
+|---|---|---|
+| 1. Source | Google Sheets | Transactions, budget targets, and savings goals are logged manually |
+| 2. Ingestion | Fivetran | Syncs Sheets → BigQuery automatically, once a day |
+| 3. Warehouse | BigQuery | Raw data lands isolated in `src_google_sheets`, kept separate from transformed layers |
+| 4. Transformation | dbt | Staging → intermediate → marts, with automated tests for primary-key uniqueness, null checks, and relationship integrity |
+| 5. Visualization | Power BI | DAX powers running totals, annualized investment returns, and forecasted goal dates |
 
-- Schema Enforcement: Raw tables land directly in a dedicated src_google_sheets dataset within BigQuery to maintain isolation between raw and transformed layers.
+## 🔍 Explore the project
 
-### 📐 2.2 Transformation (dbt) <a id="stack-transformation"></a>
-
-The warehouse follows a modular architecture structured in the /models directory:
-
-- staging/: Casts data types, standardizes naming conventions (snake_case), and sanitizes raw inputs.
-
-- intermediate/: aggregates data, joins and appends models to be used in marts models.
-
-- marts/: Centralized fact tables (fct_cashflow_transactions, fct_budget, etc) and dimension tables (dim_categories, dim_dates, etc).
-
-Routine tests are configured in sources, staging and marts yml files to guarantee primary key uniqueness, prevent null values in critical columns, and validate relationship integrity across dimensions.
-
-### 📊 2.3 Visualization (Power BI) <a id="stack-bi"></a>
-
-The reporting layer focuses on automated, high-impact financial metrics, bypassing manual monthly spreadsheet upkeep:
-
-- Core KPIs: Current Balance, Fixed Costs and Guilt-Free Variance, Savings Goals Status, Investments Future Value and Retirement Monthly Income.
-
-- Advanced Analytics: Implements DAX for dynamic date calculations (running total, investments annualized rate of return), and dynamic saving goals forecasted date.
-
-
-### 📝 2.4 Project Goals & Storytelling <a id="stack-storytelling"></a>
-
-Beyond building pipelines, data must drive decisions. The Google Slides presentation walks through a structured data narrative outlining:
-
-- Identifying context and goals for a personal finances project.
-
-- Guidelines on how to use dashboard to make data-driven decisions.
-
-
-
+| What | Where |
+|---|---|
+| 🧱 dbt models & SQL | [personal_finances_dbt repo](https://github.com/clayamakita/personal_finances_dbt) |
+| 📊 Power BI report | *add link* |
+| ⬇️ Download the `.pbix` file | *add link* |
+| 🖼️ Slide deck (project narrative) | `Personal_Finances_-_Slide_Deck.pptx` in this repo *(and add Google Slides link)* |
+| 📋 Google Sheets template | `Personal_Finances_-_Google_Sheets.xlsx` in this repo |

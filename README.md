@@ -1,12 +1,12 @@
 # 💰 Personal Finances Analytics
 
-**An end-to-end data platform that turns a couple's raw financial transactions into insights about their money.**
-
 [![Source: Google Sheets](https://img.shields.io/badge/Source-Google%20Sheets-34A853?logo=googlesheets&logoColor=white)](https://www.google.com/sheets/about/)
 [![Ingestion: Fivetran](https://img.shields.io/badge/Ingestion-Fivetran-blueviolet)](https://www.fivetran.com/)
 [![Warehouse: BigQuery](https://img.shields.io/badge/Warehouse-BigQuery-4285F4?logo=googlebigquery&logoColor=white)](https://cloud.google.com/bigquery)
 [![Transformation: dbt](https://img.shields.io/badge/Transformation-dbt-FF694B?logo=dbt&logoColor=white)](https://www.getdbt.com/)
 [![Visualization: Power BI](https://img.shields.io/badge/Visualization-Power%20BI-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+
+**An end-to-end data platform that turns a couple's raw financial transactions into insights about their money.**
 
 Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end analytics workflow.
 
@@ -14,7 +14,7 @@ Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end an
 
 ## 🧑‍🤝‍🧑 The story
 
-Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple in their 30s trying to make good financial decisions, and there are the kind of questions they ask themselves from time to time:
+Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple in their 30s trying to make good financial decisions, and these are the kind of questions they ask themselves from time to time:
 
 1. 🛒 **Enjoy life** — *Can we afford these groceries? Can we book a VR session this weekend?*
 2. 🎯 **Achieve goals** — *Which goals are already funded? When can we afford a car?*
@@ -26,17 +26,17 @@ This project builds the data pipeline and dashboard that answers those questions
 
 ## 📸 The dashboard
 
-**Monthly Summary** — tracks paycheck, fixed costs, guilt-free spending, and every transaction against budget in real time.
+**Monthly Summary** — tracks paycheck, fixed costs, guilt-free spending, and every transaction against the budget.
 
 ![Monthly summary dashboard](assets/dashboard-monthly-summary.png)
 
-**Net Worth, Investments & Retirement** — tracks savings goals, portfolio value, and a forward-looking retirement projection.
+**Savings & Investments** — tracks savings goals, portfolio value, and a forward-looking retirement projection.
 
 ![Net worth and retirement dashboard](assets/dashboard-networth-retirement.png)
 
 ## 🧭 How they budget: the Conscious Spending Plan
 
-The dashboard is built around a simple framework for allocating take-home pay, adapted from Ramit Sethi's *Conscious Spending Plan*:
+The dashboard is built around a simple framework for allocating take-home pay, adapted from Ramit Sethi's [*Conscious Spending Plan*](https://www.iwillteachyoutoberich.com/conscious-spending-basics/):
 
 | Bucket | Covers | Target % of take-home pay |
 |---|---|---|
@@ -51,19 +51,18 @@ Every transaction is tagged to one of these buckets, which is what lets the dash
 
 ```mermaid
 flowchart LR
-    A["📝 Google Sheets\nTransactions · Budget · Goals"] -->|Daily sync| B["🔄 Fivetran"]
-    B --> C[("🏢 BigQuery\nsrc_google_sheets")]
-    C --> D["🧱 dbt staging\nclean & standardize"]
-    D --> E["🔗 dbt intermediate\njoin & aggregate"]
-    E --> F["⭐ dbt marts\nfct_cashflow_transactions · fct_budget\ndim_categories · dim_dates"]
-    F --> G["📊 Power BI\nDashboard"]
+    A["📝 Google Sheets\nTransactions · Budget · Goals · Investments"] --> B["🔄 Fivetran"]
+    B --> C[("🏢 BigQuery\nRaw tables")]
+    C --> D["🧱 dbt\n- Staging: clean & standardize\n- Intermediate: join & aggregate\n- Marts: dimensions & fact tables"]
+    D --> E[("🏢 BigQuery\nTransformed tables")]
+    E --> F["📊 Power BI\nDashboard"]
 ```
 
 | Stage | Tool | What happens |
 |---|---|---|
-| 1. Source | Google Sheets | Transactions, budget targets, and savings goals are logged manually |
+| 1. Source | Google Sheets | Transactions, budget targets, savings goals, and investments are logged manually |
 | 2. Ingestion | Fivetran | Syncs Sheets → BigQuery automatically, once a day |
-| 3. Warehouse | BigQuery | Raw data lands isolated in `src_google_sheets`, kept separate from transformed layers |
+| 3. Warehouse | BigQuery | Raw data lands isolated in `src_google_sheets`, keeping it separate from transformed layers |
 | 4. Transformation | dbt | Staging → intermediate → marts, with automated tests for primary-key uniqueness, null checks, and relationship integrity |
 | 5. Visualization | Power BI | DAX powers running totals, annualized investment returns, and forecasted goal dates |
 
@@ -71,8 +70,8 @@ flowchart LR
 
 | What | Where |
 |---|---|
+| 📋 Google Sheets template | `Personal_Finances_-_Google_Sheets.xlsx` in this repo |
 | 🧱 dbt models & SQL | [personal_finances_dbt repo](https://github.com/clayamakita/personal_finances_dbt) |
 | 📊 Power BI report | *add link* |
 | ⬇️ Download the `.pbix` file | *add link* |
 | 🖼️ Slide deck (project narrative) | `Personal_Finances_-_Slide_Deck.pptx` in this repo *(and add Google Slides link)* |
-| 📋 Google Sheets template | `Personal_Finances_-_Google_Sheets.xlsx` in this repo |

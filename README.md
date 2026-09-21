@@ -14,15 +14,15 @@ Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end an
 
 ## 🧑‍🤝‍🧑 The story
 
-Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple in their 30s trying to make good financial decisions, and these are the kind of questions they ask themselves from time to time:
+Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple **stuck in a common money debate**. One wants to invest more for the future, while the other wants to enjoy life today. Neither is wrong — they just need a plan that makes room for both.
+
+This project builds the data pipeline and dashboard that help the couple have more productive conversations about money. It automatically answers the type of questions below — no manual spreadsheet reconciliation required.
 
 1. 🛒 **Enjoy life** — *Can we afford these groceries? Can we book a VR session this weekend?*
 2. 🎯 **Achieve goals** — *Which goals are already funded? When can we afford a car?*
 3. 🏖️ **Build wealth** — *Will we be okay when we retire? What would our income look like?*
 
-This project builds the data pipeline and dashboard that answers those questions automatically — no manual spreadsheet reconciliation required.
-
-> All data shown is **synthetic**, generated to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
+> All data shown is **synthetic**, generated with AI to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
 
 ## 📸 The dashboard
 

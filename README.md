@@ -51,11 +51,10 @@ Every transaction is tagged to one of these buckets, which is what lets the dash
 
 ```mermaid
 flowchart LR
-    A["📝 Google Sheets\nTransactions · Budget · Goals · Investments"] --> B["🔄 Fivetran"]
-    B --> C[("🏢 BigQuery\nRaw tables")]
-    C --> D["🧱 dbt\n- Staging: clean & standardize\n- Intermediate: join & aggregate\n- Marts: dimensions & fact tables"]
-    D --> E[("🏢 BigQuery\nTransformed tables")]
-    E --> F["📊 Power BI\nDashboard"]
+    A["📝 Google Sheets\nTransactions · Budget · Goals · Investments"] -->|Fivetran| B[("🏢 BigQuery\nRaw tables")]
+    B --> C["🧱 dbt\nStaging\nIntermediate\nMarts"]
+    C --> D[("🏢 BigQuery\nTransformed tables")]
+    D --> E["📊 Power BI\nDashboard"]
 ```
 
 | Stage | Tool | What happens |
@@ -63,7 +62,7 @@ flowchart LR
 | 1. Source | Google Sheets | Transactions, budget targets, savings goals, and investments are logged manually |
 | 2. Ingestion | Fivetran | Syncs Sheets → BigQuery automatically, once a day |
 | 3. Warehouse | BigQuery | Raw data lands isolated in `src_google_sheets`, keeping it separate from transformed layers |
-| 4. Transformation | dbt | Staging → intermediate → marts, with automated tests for primary-key uniqueness, null checks, and relationship integrity |
+| 4. Transformation | dbt | Staging → Intermediate → Marts models, with automated tests for primary-key uniqueness, null checks, and relationship integrity |
 | 5. Visualization | Power BI | DAX powers running totals, annualized investment returns, and forecasted goal dates |
 
 ## 🔍 Explore the project

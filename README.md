@@ -14,15 +14,15 @@ Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end an
 
 ## 🧑‍🤝‍🧑 The story
 
-Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple in their 30s trying to make good financial decisions, and these are the kind of questions they ask themselves from time to time:
+Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple **stuck in a common money debate**. One wants to invest more for the future, while the other wants to enjoy life today. Neither is wrong — they just need a plan that makes room for both.
+
+This project builds the data pipeline and dashboard that help the couple have more productive conversations about money. It automatically answers the type of questions below — no manual spreadsheet reconciliation required.
 
 1. 🛒 **Enjoy life** — *Can we afford these groceries? Can we book a VR session this weekend?*
 2. 🎯 **Achieve goals** — *Which goals are already funded? When can we afford a car?*
 3. 🏖️ **Build wealth** — *Will we be okay when we retire? What would our income look like?*
 
-This project builds the data pipeline and dashboard that answers those questions automatically — no manual spreadsheet reconciliation required.
-
-> All data shown is **synthetic**, generated to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
+> All data shown is **synthetic**, generated with AI to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
 
 ## 📸 The dashboard
 
@@ -51,11 +51,10 @@ Every transaction is tagged to one of these buckets, which is what lets the dash
 
 ```mermaid
 flowchart LR
-    A["📝 Google Sheets\nTransactions · Budget · Goals · Investments"] --> B["🔄 Fivetran"]
-    B --> C[("🏢 BigQuery\nRaw tables")]
-    C --> D["🧱 dbt\n- Staging: clean & standardize\n- Intermediate: join & aggregate\n- Marts: dimensions & fact tables"]
-    D --> E[("🏢 BigQuery\nTransformed tables")]
-    E --> F["📊 Power BI\nDashboard"]
+    A["📝 Google Sheets\nTransactions · Budget · Goals · Investments"] -->|Fivetran| B[("🏢 BigQuery\nRaw tables")]
+    B --> C["🧱 dbt\nStaging\nIntermediate\nMarts"]
+    C --> D[("🏢 BigQuery\nTransformed tables")]
+    D --> E["📊 Power BI\nDashboard"]
 ```
 
 | Stage | Tool | What happens |
@@ -63,7 +62,7 @@ flowchart LR
 | 1. Source | Google Sheets | Transactions, budget targets, savings goals, and investments are logged manually |
 | 2. Ingestion | Fivetran | Syncs Sheets → BigQuery automatically, once a day |
 | 3. Warehouse | BigQuery | Raw data lands isolated in `src_google_sheets`, keeping it separate from transformed layers |
-| 4. Transformation | dbt | Staging → intermediate → marts, with automated tests for primary-key uniqueness, null checks, and relationship integrity |
+| 4. Transformation | dbt | Staging → Intermediate → Marts models, with automated tests for primary-key uniqueness, null checks, and relationship integrity |
 | 5. Visualization | Power BI | DAX powers running totals, annualized investment returns, and forecasted goal dates |
 
 ## 🔍 Explore the project

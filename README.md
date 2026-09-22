@@ -72,4 +72,4 @@ flowchart LR
 | 📋 Google Sheets template | [Google Sheets](https://docs.google.com/spreadsheets/d/1JcsT9pk5fk32Ljm0JsUDgQSIH8mNPSjMwa3npAzKvro/edit?usp=drive_link) or [`Personal Finances - Google Sheets.xlsx` in this repo](assets/Personal%20Finances%20-%20Google%20Sheets.xlsx) |
 | 🧱 dbt models & SQL | [personal_finances_dbt repo](https://github.com/clayamakita/personal_finances_dbt) |
 | 📊 Power BI report | [Access it live](https://app.powerbi.com/view?r=eyJrIjoiZjE1YWQzOTQtZDMwNi00NDJhLTllNTQtNzA3YTA2MjI2NTg1IiwidCI6ImQ4ZmYwY2RhLWM0ZjktNDUyMC05NmQ5LWM0NGFlYjViZjlkZSJ9) or [`Personal Finances - Dashboard - Google Sheets.pbix` in this repo](assets/Personal%20Finances%20-%20Dashboard%20-%20Google%20Sheets.pbix) |
-| 🖼️ Slide deck (project narrative) | [Google Slides](https://docs.google.com/presentation/d/1TdE2Vc--GkfNuxhUxP54OgB0hXIgdShH7-omhWqGdsA/edit?usp=drive_link) or [`Personal Finances - Slide Deck.pptx` in this repo](assets/Personal%20Finances%20-%20Slide%20Deck.pptx) |
+| 🖼️ Slide deck (project narrative) | [`Personal Finances - Slide Deck.pdf` in this repo](assets/Personal%20Finances%20-%20Slide%20Deck.pdf) |

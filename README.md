@@ -6,7 +6,7 @@
 [![Transformation: dbt](https://img.shields.io/badge/Transformation-dbt-FF694B?logo=dbt&logoColor=white)](https://www.getdbt.com/)
 [![Visualization: Power BI](https://img.shields.io/badge/Visualization-Power%20BI-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 
-**An end-to-end data platform that turns a couple's raw financial transactions into insights about their money.**
+**An end-to-end data platform that turns a couple's financial transactions into insights about their money.**
 
 Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end analytics workflow.
 
@@ -22,6 +22,8 @@ This project builds the data pipeline and dashboard that help the couple have mo
 2. 🎯 **Achieve goals** — *Which goals are already funded? When can we afford a car?*
 3. 🏖️ **Build wealth** — *Will we be okay when we retire? What would our income look like?*
 
+The full story is available in this [Slide Deck](https://tinyurl.com/PersonalFinances-SlideDeck).
+
 > All data shown is **synthetic**, generated with AI to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
 
 ## 📸 The dashboard
@@ -33,6 +35,8 @@ This project builds the data pipeline and dashboard that help the couple have mo
 **Savings & Investments** — tracks savings goals, portfolio value, and a forward-looking retirement projection.
 
 ![Net worth and retirement dashboard](assets/dashboard-networth-retirement.png)
+
+Access the [live dashbord here](https://app.powerbi.com/view?r=eyJrIjoiNzc4NmJiZmQtNjk2Mi00MDI0LWFlNTktZTNmYjMxMDJkOGRhIiwidCI6ImQ4ZmYwY2RhLWM0ZjktNDUyMC05NmQ5LWM0NGFlYjViZjlkZSJ9).
 
 ## 🧭 How they budget: the Conscious Spending Plan
 
@@ -70,6 +74,6 @@ flowchart LR
 | What | Where |
 |---|---|
 | 📋 Google Sheets template | [Google Sheets](https://docs.google.com/spreadsheets/d/1JcsT9pk5fk32Ljm0JsUDgQSIH8mNPSjMwa3npAzKvro/edit?usp=drive_link) or [`Personal Finances - Google Sheets.xlsx` in this repo](assets/Personal%20Finances%20-%20Google%20Sheets.xlsx) |
-| 🧱 dbt models & SQL | [personal_finances_dbt repo](https://github.com/clayamakita/personal_finances_dbt) |
-| 📊 Power BI report | [Access it live](https://app.powerbi.com/view?r=eyJrIjoiZjE1YWQzOTQtZDMwNi00NDJhLTllNTQtNzA3YTA2MjI2NTg1IiwidCI6ImQ4ZmYwY2RhLWM0ZjktNDUyMC05NmQ5LWM0NGFlYjViZjlkZSJ9) or [`Personal Finances - Dashboard - Google Sheets.pbix` in this repo](assets/Personal%20Finances%20-%20Dashboard%20-%20Google%20Sheets.pbix) |
+| 🧱 dbt models (SQL) | [personal_finances_dbt repo](https://github.com/clayamakita/personal_finances_dbt) |
+| 📊 Power BI report | [Access it live](https://app.powerbi.com/view?r=eyJrIjoiNzc4NmJiZmQtNjk2Mi00MDI0LWFlNTktZTNmYjMxMDJkOGRhIiwidCI6ImQ4ZmYwY2RhLWM0ZjktNDUyMC05NmQ5LWM0NGFlYjViZjlkZSJ9) or [`Personal Finances - Dashboard.pbix` in this repo](assets/Personal%20Finances%20-%20Dashboard.pbix) |
 | 🖼️ Slide deck (project narrative) | [`Personal Finances - Slide Deck.pdf` in this repo](assets/Personal%20Finances%20-%20Slide%20Deck.pdf) |

@@ -14,6 +14,8 @@ Created by Clarissa Yamakita — a portfolio project showcasing an end-to-end an
 
 ## 🧑‍🤝‍🧑 The story
 
+The full story is available in this [Slide Deck](https://tinyurl.com/PersonalFinances-SlideDeck).
+
 Meet **Kenji**, a product manager who loves gaming, and **Mei**, a sound designer who brings music into everything she does. They're a couple **stuck in a common money debate**. One wants to invest more for the future, while the other wants to enjoy life today. Neither is wrong — they just need a plan that makes room for both.
 
 This project builds the data pipeline and dashboard that help the couple have more productive conversations about money. It automatically answers the type of questions below — no manual spreadsheet reconciliation required.
@@ -22,11 +24,11 @@ This project builds the data pipeline and dashboard that help the couple have mo
 2. 🎯 **Achieve goals** — *Which goals are already funded? When can we afford a car?*
 3. 🏖️ **Build wealth** — *Will we be okay when we retire? What would our income look like?*
 
-The full story is available in this [Slide Deck](https://tinyurl.com/PersonalFinances-SlideDeck).
-
 > All data shown is **synthetic**, generated with AI to demonstrate the platform. Kenji, Mei, and every transaction, vendor, and account are fictional.
 
 ## 📸 The dashboard
+
+Access the [live dashbord here](https://app.powerbi.com/view?r=eyJrIjoiNzc4NmJiZmQtNjk2Mi00MDI0LWFlNTktZTNmYjMxMDJkOGRhIiwidCI6ImQ4ZmYwY2RhLWM0ZjktNDUyMC05NmQ5LWM0NGFlYjViZjlkZSJ9).
 
 **Monthly Summary** — tracks paycheck, fixed costs, guilt-free spending, and every transaction against the budget.
 
@@ -35,8 +37,6 @@ The full story is available in this [Slide Deck](https://tinyurl.com/PersonalFin
 **Savings & Investments** — tracks savings goals, portfolio value, and a forward-looking retirement projection.
 
 ![Net worth and retirement dashboard](assets/dashboard-networth-retirement.png)
-
-Access the [live dashbord here](https://app.powerbi.com/view?r=eyJrIjoiNzc4NmJiZmQtNjk2Mi00MDI0LWFlNTktZTNmYjMxMDJkOGRhIiwidCI6ImQ4ZmYwY2RhLWM0ZjktNDUyMC05NmQ5LWM0NGFlYjViZjlkZSJ9).
 
 ## 🧭 How they budget: the Conscious Spending Plan
 
